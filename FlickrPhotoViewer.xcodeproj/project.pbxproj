@@ -17,6 +17,18 @@
 		AA282E0C164E2C3E00CB3D84 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA282E0B164E2C3E00CB3D84 /* Default@2x.png */; };
 		AA282E0E164E2C3E00CB3D84 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA282E0D164E2C3E00CB3D84 /* Default-568h@2x.png */; };
 		AA91AE7F164E2CC6001D473F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AA91AE7E164E2CC6001D473F /* README.md */; };
+		AAD0F6451650D6100057F479 /* PVFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6341650D6100057F479 /* PVFeedCell.m */; };
+		AAD0F6461650D6100057F479 /* PVFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6361650D6100057F479 /* PVFeedController.m */; };
+		AAD0F6471650D6100057F479 /* PVFlickerEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6381650D6100057F479 /* PVFlickerEntry.m */; };
+		AAD0F6481650D6100057F479 /* PVFlickerFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F63A1650D6100057F479 /* PVFlickerFeed.m */; };
+		AAD0F6491650D6100057F479 /* PVImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F63C1650D6100057F479 /* PVImageStore.m */; };
+		AAD0F64A1650D6100057F479 /* PVImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F63E1650D6100057F479 /* PVImageView.m */; };
+		AAD0F64B1650D6100057F479 /* PVMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6401650D6100057F479 /* PVMainViewController.m */; };
+		AAD0F64C1650D6100057F479 /* PVPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6421650D6100057F479 /* PVPhotoCell.m */; };
+		AAD0F64D1650D6100057F479 /* PVStackLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6441650D6100057F479 /* PVStackLayout.m */; };
+		AAD0F6501650D68A0057F479 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD0F64F1650D68A0057F479 /* QuartzCore.framework */; };
+		AAD0F6661650D8B80057F479 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD0F6641650D8B80057F479 /* frame.png */; };
+		AAD0F6671650D8B80057F479 /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAD0F6651650D8B80057F479 /* paper.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +46,27 @@
 		AA282E0B164E2C3E00CB3D84 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AA282E0D164E2C3E00CB3D84 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AA91AE7E164E2CC6001D473F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		AAD0F6331650D6100057F479 /* PVFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVFeedCell.h; sourceTree = "<group>"; };
+		AAD0F6341650D6100057F479 /* PVFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVFeedCell.m; sourceTree = "<group>"; };
+		AAD0F6351650D6100057F479 /* PVFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVFeedController.h; sourceTree = "<group>"; };
+		AAD0F6361650D6100057F479 /* PVFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVFeedController.m; sourceTree = "<group>"; };
+		AAD0F6371650D6100057F479 /* PVFlickerEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVFlickerEntry.h; sourceTree = "<group>"; };
+		AAD0F6381650D6100057F479 /* PVFlickerEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVFlickerEntry.m; sourceTree = "<group>"; };
+		AAD0F6391650D6100057F479 /* PVFlickerFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVFlickerFeed.h; sourceTree = "<group>"; };
+		AAD0F63A1650D6100057F479 /* PVFlickerFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVFlickerFeed.m; sourceTree = "<group>"; };
+		AAD0F63B1650D6100057F479 /* PVImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVImageStore.h; sourceTree = "<group>"; };
+		AAD0F63C1650D6100057F479 /* PVImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVImageStore.m; sourceTree = "<group>"; };
+		AAD0F63D1650D6100057F479 /* PVImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVImageView.h; sourceTree = "<group>"; };
+		AAD0F63E1650D6100057F479 /* PVImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVImageView.m; sourceTree = "<group>"; };
+		AAD0F63F1650D6100057F479 /* PVMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVMainViewController.h; sourceTree = "<group>"; };
+		AAD0F6401650D6100057F479 /* PVMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVMainViewController.m; sourceTree = "<group>"; };
+		AAD0F6411650D6100057F479 /* PVPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVPhotoCell.h; sourceTree = "<group>"; };
+		AAD0F6421650D6100057F479 /* PVPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVPhotoCell.m; sourceTree = "<group>"; };
+		AAD0F6431650D6100057F479 /* PVStackLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVStackLayout.h; sourceTree = "<group>"; };
+		AAD0F6441650D6100057F479 /* PVStackLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVStackLayout.m; sourceTree = "<group>"; };
+		AAD0F64F1650D68A0057F479 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AAD0F6641650D8B80057F479 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = FlickrPhotoViewer/frame.png; sourceTree = "<group>"; };
+		AAD0F6651650D8B80057F479 /* paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = paper.jpg; path = FlickrPhotoViewer/paper.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD0F6501650D68A0057F479 /* QuartzCore.framework in Frameworks */,
 				AA282DF8164E2C3E00CB3D84 /* UIKit.framework in Frameworks */,
 				AA282DFA164E2C3E00CB3D84 /* Foundation.framework in Frameworks */,
 				AA282DFC164E2C3E00CB3D84 /* CoreGraphics.framework in Frameworks */,
@@ -71,6 +105,7 @@
 		AA282DF6164E2C3E00CB3D84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAD0F64F1650D68A0057F479 /* QuartzCore.framework */,
 				AA282DF7164E2C3E00CB3D84 /* UIKit.framework */,
 				AA282DF9164E2C3E00CB3D84 /* Foundation.framework */,
 				AA282DFB164E2C3E00CB3D84 /* CoreGraphics.framework */,
@@ -83,6 +118,25 @@
 			children = (
 				AA282E06164E2C3E00CB3D84 /* PVAppDelegate.h */,
 				AA282E07164E2C3E00CB3D84 /* PVAppDelegate.m */,
+				AAD0F63F1650D6100057F479 /* PVMainViewController.h */,
+				AAD0F6401650D6100057F479 /* PVMainViewController.m */,
+				AAD0F6331650D6100057F479 /* PVFeedCell.h */,
+				AAD0F6341650D6100057F479 /* PVFeedCell.m */,
+				AAD0F6351650D6100057F479 /* PVFeedController.h */,
+				AAD0F6361650D6100057F479 /* PVFeedController.m */,
+				AAD0F6371650D6100057F479 /* PVFlickerEntry.h */,
+				AAD0F6381650D6100057F479 /* PVFlickerEntry.m */,
+				AAD0F6391650D6100057F479 /* PVFlickerFeed.h */,
+				AAD0F63A1650D6100057F479 /* PVFlickerFeed.m */,
+				AAD0F63B1650D6100057F479 /* PVImageStore.h */,
+				AAD0F63C1650D6100057F479 /* PVImageStore.m */,
+				AAD0F63D1650D6100057F479 /* PVImageView.h */,
+				AAD0F63E1650D6100057F479 /* PVImageView.m */,
+				AAD0F6411650D6100057F479 /* PVPhotoCell.h */,
+				AAD0F6421650D6100057F479 /* PVPhotoCell.m */,
+				AAD0F6431650D6100057F479 /* PVStackLayout.h */,
+				AAD0F6441650D6100057F479 /* PVStackLayout.m */,
+				AAD0F6681650D8C10057F479 /* Images */,
 				AA282DFE164E2C3E00CB3D84 /* Supporting Files */,
 			);
 			path = FlickrPhotoViewer;
@@ -100,6 +154,16 @@
 				AA282E0D164E2C3E00CB3D84 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAD0F6681650D8C10057F479 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AAD0F6641650D8B80057F479 /* frame.png */,
+				AAD0F6651650D8B80057F479 /* paper.jpg */,
+			);
+			name = Images;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +223,8 @@
 				AA282E0C164E2C3E00CB3D84 /* Default@2x.png in Resources */,
 				AA282E0E164E2C3E00CB3D84 /* Default-568h@2x.png in Resources */,
 				AA91AE7F164E2CC6001D473F /* README.md in Resources */,
+				AAD0F6661650D8B80057F479 /* frame.png in Resources */,
+				AAD0F6671650D8B80057F479 /* paper.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +237,15 @@
 			files = (
 				AA282E04164E2C3E00CB3D84 /* main.m in Sources */,
 				AA282E08164E2C3E00CB3D84 /* PVAppDelegate.m in Sources */,
+				AAD0F6451650D6100057F479 /* PVFeedCell.m in Sources */,
+				AAD0F6461650D6100057F479 /* PVFeedController.m in Sources */,
+				AAD0F6471650D6100057F479 /* PVFlickerEntry.m in Sources */,
+				AAD0F6481650D6100057F479 /* PVFlickerFeed.m in Sources */,
+				AAD0F6491650D6100057F479 /* PVImageStore.m in Sources */,
+				AAD0F64A1650D6100057F479 /* PVImageView.m in Sources */,
+				AAD0F64B1650D6100057F479 /* PVMainViewController.m in Sources */,
+				AAD0F64C1650D6100057F479 /* PVPhotoCell.m in Sources */,
+				AAD0F64D1650D6100057F479 /* PVStackLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

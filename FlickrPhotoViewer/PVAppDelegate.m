@@ -7,6 +7,7 @@
 //
 
 #import "PVAppDelegate.h"
+#import "PVMainViewController.h"
 
 @implementation PVAppDelegate
 
@@ -14,6 +15,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+
+    UICollectionViewFlowLayout *mainGridLayout = [[UICollectionViewFlowLayout alloc] init];
+    PVMainViewController *viewController = [[PVMainViewController alloc] initWithCollectionViewLayout:mainGridLayout];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     return YES;
 }
