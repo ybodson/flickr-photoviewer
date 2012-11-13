@@ -40,6 +40,11 @@
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
     [self.collectionView registerClass:[PVFeedCell class] forCellWithReuseIdentifier:@"FeedCell"];
 
+    UIColor *brownish = [UIColor colorWithRed:147.0/255 green:133.0/255 blue:116.0/255 alpha:1.0];
+    
+    [[UINavigationBar appearance] setTintColor:brownish];
+    [[UIRefreshControl appearance] setTintColor:brownish];
+    
     self.backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                        style:UIBarButtonItemStyleBordered
                                                       target:self
