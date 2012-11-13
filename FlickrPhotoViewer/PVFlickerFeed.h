@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @protocol PVFlickerFeedDelegate
+
 - (void)feedFetched;
+
 @end
+
 
 @interface PVFlickerFeed : NSObject
 

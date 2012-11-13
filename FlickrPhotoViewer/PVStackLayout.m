@@ -9,14 +9,16 @@
 #import "PVStackLayout.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define VIEW_SIZE 240
+
 @implementation PVStackLayout
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        self.stackCenter = CGPointMake(120, 120);
-        self.viewSize = CGSizeMake(240, 240);
+        self.stackCenter = CGPointMake(VIEW_SIZE / 2, VIEW_SIZE / 2);
+        self.viewSize = CGSizeMake(VIEW_SIZE, VIEW_SIZE);
     }
     return self;
 }
@@ -29,11 +31,11 @@
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewLayoutAttributes* attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    attributes.size = [self.parent sizeForItemAtIndexPath:indexPath];
+    attributes.size = [self.delegate sizeForItemAtIndexPath:indexPath];
     attributes.center = self.stackCenter;
     attributes.zIndex = indexPath.row;
     CATransform3D final = CATransform3DConcat(CATransform3DMakeTranslation(0, 0, -indexPath.row),
-                                              CATransform3DMakeRotation([self.parent angleForItemAtIndexPath:indexPath], 0, 0, 1));
+                                              CATransform3DMakeRotation([self.delegate angleForItemAtIndexPath:indexPath], 0, 0, 1));
     attributes.transform3D = final;
     return attributes;
 }

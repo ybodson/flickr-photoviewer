@@ -9,8 +9,11 @@
 #import "PVImageStore.h"
 
 @interface PVImageStore ()
+
 @property (nonatomic, strong) NSMutableDictionary *images;
+
 @end
+
 
 @implementation PVImageStore
 

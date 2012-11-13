@@ -18,8 +18,8 @@
 
 @interface PVStackLayout : UICollectionViewLayout
 
-@property (nonatomic, weak) id <PVStackLayoutDelegate> parent;
-@property CGPoint stackCenter;
-@property CGSize viewSize;
+@property (nonatomic, weak) id <PVStackLayoutDelegate> delegate;
+@property (nonatomic) CGPoint stackCenter;
+@property (nonatomic) CGSize viewSize;
 
 @end

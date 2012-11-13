@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UICollectionView *frontView;
 @property (nonatomic, strong) PVStackLayout *stackLayout;
 @property (nonatomic, strong) UIBarButtonItem *backButton;
+@property (nonatomic, weak) PVFeedCell *selectedCell;
 @property (nonatomic) CGPoint stackPosition;
 
 @end
@@ -52,7 +53,8 @@
     flow.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
     [self.navigationItem setRightBarButtonItem:self.backButton animated:YES];
     
-    [UIView animateWithDuration:0.35
+    self.selectedCell.alpha = 0.0;
+    [UIView animateWithDuration:0.4
                           delay:0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
@@ -68,7 +70,7 @@
 {
     [self.navigationItem setRightBarButtonItem:nil animated:YES];
 
-    [UIView animateWithDuration:0.35
+    [UIView animateWithDuration:0.4
                           delay:0
                         options:UIViewAnimationCurveEaseOut
                      animations:^{
@@ -80,6 +82,7 @@
                          self.frontView = nil;
                          self.midView = nil;
                          self.stackLayout = nil;
+                         self.selectedCell.alpha = 1.0;
                      }];
 }
 
@@ -108,16 +111,15 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.frontView.alpha = 1.0;
-    PVFeedCell *cell = (PVFeedCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    CGPoint p = cell.frame.origin;
-    p.x += 120;
-    p.y = p.y + 120 - collectionView.contentOffset.y;
+    self.selectedCell = (PVFeedCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+
+    CGPoint p;
+    p.x = CGRectGetMidX(self.selectedCell.frame);
+    p.y = CGRectGetMidY(self.selectedCell.frame) - collectionView.contentOffset.y;
     self.stackPosition = p;
     
     self.stackLayout = [[PVStackLayout alloc] init];
     self.stackLayout.stackCenter = p;
-//    NSLog(@"%@, %@, %@", NSStringFromCGRect(self.collectionView.frame), NSStringFromCGSize(self.collectionView.contentSize), NSStringFromCGPoint(self.stackPosition));
     self.stackLayout.viewSize = self.collectionView.frame.size;
     self.frontView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.stackLayout];
     self.frontView.backgroundColor = [UIColor clearColor];
@@ -126,7 +128,7 @@
     PVFeedController *feedController = [self.feedControllers objectAtIndex:indexPath.row];
     
     self.frontView.dataSource = feedController;
-    self.stackLayout.parent = feedController;
+    self.stackLayout.delegate = feedController;
     self.frontView.delegate = feedController;
     self.midView = [[UIView alloc] initWithFrame:self.view.frame];
     self.midView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
