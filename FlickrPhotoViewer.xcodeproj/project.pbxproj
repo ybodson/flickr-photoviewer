@@ -29,6 +29,7 @@
 		AAD0F6501650D68A0057F479 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD0F64F1650D68A0057F479 /* QuartzCore.framework */; };
 		AAD0F6661650D8B80057F479 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD0F6641650D8B80057F479 /* frame.png */; };
 		AAD0F6671650D8B80057F479 /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAD0F6651650D8B80057F479 /* paper.jpg */; };
+		AAD0F66E165212990057F479 /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD0F66D165212990057F479 /* Default~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		AAD0F64F1650D68A0057F479 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AAD0F6641650D8B80057F479 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frame.png; path = FlickrPhotoViewer/frame.png; sourceTree = "<group>"; };
 		AAD0F6651650D8B80057F479 /* paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = paper.jpg; path = FlickrPhotoViewer/paper.jpg; sourceTree = "<group>"; };
+		AAD0F66D165212990057F479 /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~ipad.png"; path = "../Default~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				AA282E03164E2C3E00CB3D84 /* main.m */,
 				AA282E05164E2C3E00CB3D84 /* FlickrPhotoViewer-Prefix.pch */,
 				AA282E09164E2C3E00CB3D84 /* Default.png */,
+				AAD0F66D165212990057F479 /* Default~ipad.png */,
 				AA282E0B164E2C3E00CB3D84 /* Default@2x.png */,
 				AA282E0D164E2C3E00CB3D84 /* Default-568h@2x.png */,
 			);
@@ -225,6 +228,7 @@
 				AA91AE7F164E2CC6001D473F /* README.md in Resources */,
 				AAD0F6661650D8B80057F479 /* frame.png in Resources */,
 				AAD0F6671650D8B80057F479 /* paper.jpg in Resources */,
+				AAD0F66E165212990057F479 /* Default~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
