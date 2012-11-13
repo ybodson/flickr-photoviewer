@@ -56,6 +56,15 @@
 - (void)feedFetched
 {
     [self.collectionView reloadData];
+    if (self.gridCollectionView) {
+        [self.gridCollectionView reloadData];
+        [self.refreshControl endRefreshing];
+    }
+}
+
+- (void)refreshFeed
+{
+    [self.feed fetchEntries];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -71,7 +80,7 @@
 {
     PVPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     
-    if (self.feed.entries) {
+    if (self.feed.entries && self.feed.entries.count > 0) {
         PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
         [cell setSize:entry.size];
         [cell.imageView loadImageFromURLString:entry.thumbnail];

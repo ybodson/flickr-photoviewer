@@ -20,7 +20,6 @@
 @property (nonatomic, strong) PVStackLayout *stackLayout;
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, weak) PVFeedCell *selectedCell;
-@property (nonatomic) CGPoint stackPosition;
 
 @end
 
@@ -32,7 +31,7 @@
     [super viewDidLoad];
     
     self.feedControllers = @[[[PVFeedController alloc] initWithTag:@"Wildlife"],
-        [[PVFeedController alloc] initWithTag:@"Prague"],
+        [[PVFeedController alloc] initWithTag:@"Flowers"],
         [[PVFeedController alloc] initWithTag:@"Nature"],
         [[PVFeedController alloc] initWithTag:@"Beach"]
     ];
@@ -51,9 +50,10 @@
 {
     UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
     flow.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
+    self.selectedCell.alpha = 0.0;
+    self.navigationItem.title = self.selectedCell.textField.text;
     [self.navigationItem setRightBarButtonItem:self.backButton animated:YES];
     
-    self.selectedCell.alpha = 0.0;
     [UIView animateWithDuration:0.4
                           delay:0
                         options:UIViewAnimationCurveEaseOut
@@ -69,6 +69,7 @@
 - (void)backPressed:(id)sender
 {
     [self.navigationItem setRightBarButtonItem:nil animated:YES];
+    self.navigationItem.title = @"Flickr Photo Viewer";
 
     [UIView animateWithDuration:0.4
                           delay:0
@@ -80,12 +81,23 @@
                      completion:^(BOOL finished){
                          self.frontView.alpha = 0.0;
                          self.frontView = nil;
-                         self.midView = nil;
+                         self.midView.alpha = 0.0;
                          self.stackLayout = nil;
                          self.selectedCell.alpha = 1.0;
                      }];
 }
 
+- (void)createMiddleView
+{
+    if (self.midView)
+        return;
+
+    self.midView = [[UIView alloc] initWithFrame:self.view.frame];
+    self.midView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+    self.midView.alpha = 0.0;
+    [self.view addSubview:self.midView];
+
+}
 
 #pragma mark - UICollectionViewDataSource
 
@@ -106,7 +118,6 @@
     return cell;
 }
 
-
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -116,24 +127,27 @@
     CGPoint p;
     p.x = CGRectGetMidX(self.selectedCell.frame);
     p.y = CGRectGetMidY(self.selectedCell.frame) - collectionView.contentOffset.y;
-    self.stackPosition = p;
     
     self.stackLayout = [[PVStackLayout alloc] init];
     self.stackLayout.stackCenter = p;
     self.stackLayout.viewSize = self.collectionView.frame.size;
     self.frontView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.stackLayout];
+    
+    PVFeedController *feedController = [self.feedControllers objectAtIndex:indexPath.row];
+
+    if (feedController.refreshControl == nil)
+        feedController.refreshControl = [[UIRefreshControl alloc] init];
+    [feedController.refreshControl addTarget:feedController action:@selector(refreshFeed) forControlEvents:UIControlEventValueChanged];
+    [self.frontView addSubview:feedController.refreshControl];
+    
     self.frontView.backgroundColor = [UIColor clearColor];
     [self.frontView registerClass:[PVPhotoCell class] forCellWithReuseIdentifier:@"PhotoCell"];
     
-    PVFeedController *feedController = [self.feedControllers objectAtIndex:indexPath.row];
-    
+    feedController.gridCollectionView = self.frontView;
     self.frontView.dataSource = feedController;
     self.stackLayout.delegate = feedController;
     self.frontView.delegate = feedController;
-    self.midView = [[UIView alloc] initWithFrame:self.view.frame];
-    self.midView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-    self.midView.alpha = 0.0;
-    [self.view addSubview:self.midView];
+    [self createMiddleView];
     [self.view addSubview:self.frontView];
     
     [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(stackPressed) userInfo:nil repeats:NO];

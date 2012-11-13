@@ -12,8 +12,11 @@
 @interface PVFeedController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, PVStackLayoutDelegate, UITextFieldDelegate>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
+@property (nonatomic, weak) UICollectionView *gridCollectionView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic) NSString *tag;
 
 - (id)initWithTag:(NSString *)tag;
+- (void)refreshFeed;
 
 @end
