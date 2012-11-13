@@ -45,6 +45,7 @@
     self.collectionView.delegate = feedViewController;
     self.collectionView.dataSource = feedViewController;
     self.stackLayout.delegate = feedViewController;
+    self.textField.delegate = feedViewController;
 }
 
 @end

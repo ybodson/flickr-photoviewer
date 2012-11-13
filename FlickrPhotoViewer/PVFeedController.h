@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PVStackLayout.h"
 
-@interface PVFeedController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, PVStackLayoutDelegate>
+@interface PVFeedController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, PVStackLayoutDelegate, UITextFieldDelegate>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic) NSString *tag;

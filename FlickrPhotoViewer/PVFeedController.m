@@ -93,11 +93,20 @@
 - (void)setTag:(NSString *)tag
 {
     self.feed.tag = tag;
+    [self.feed fetchEntries];
 }
 
 - (NSString *)tag
 {
     return self.feed.tag;
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    self.tag = textField.text;
+    return YES;
 }
 
 @end

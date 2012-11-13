@@ -23,7 +23,6 @@
 {
     self = [super init];
     if (self) {
-        self.entries = [[NSMutableArray alloc] init];
         self.tag = tag;
     }
     return self;
@@ -40,7 +39,8 @@
 
 - (void)fetchEntries
 {
-    //self.entries = nil;
+    self.entries = nil;
+    self.entries = [[NSMutableArray alloc] init];
     self.xmlData = [[NSMutableData alloc] init];
     static NSString *flickrFeed = @"http://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=";
     
