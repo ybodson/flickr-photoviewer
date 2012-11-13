@@ -12,8 +12,4 @@
 
 @interface PVMainViewController : UICollectionViewController
 
-@property (nonatomic, strong) UIView *midView;
-@property (nonatomic, strong) UICollectionView *frontView;
-@property (nonatomic, strong) PVStackLayout *stackLayout;
-
 @end

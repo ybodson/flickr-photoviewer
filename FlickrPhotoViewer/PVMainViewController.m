@@ -15,6 +15,9 @@
 @interface PVMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSArray *feedControllers;
+@property (nonatomic, strong) UIView *midView;
+@property (nonatomic, strong) UICollectionView *frontView;
+@property (nonatomic, strong) PVStackLayout *stackLayout;
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic) CGPoint stackPosition;
 

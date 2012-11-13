@@ -22,6 +22,8 @@
 
 @implementation PVFeedController
 
+@dynamic tag;
+
 - (id)initWithTag:(NSString *)tag
 {
     self = [super init];
