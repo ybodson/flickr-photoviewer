@@ -10,9 +10,7 @@
 
 @interface PVPhotoCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIImageView *borderView;
-@property (nonatomic, strong) UIImageView *imageView;
-
 - (void)setSize:(CGSize)size;
+- (void)setImage:(UIImage *)image;
 
 @end

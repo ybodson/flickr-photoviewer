@@ -11,9 +11,8 @@
 #import "PVFlickerEntry.h"
 #import "PVPhotoCell.h"
 #import "PVImageStore.h"
-#import "PVStackLayout.h"
 
-@interface PVFeedController () <PVFlickerFeedDelegate, PVFlickerEntryDownloadDelegate, PVStackLayoutDelegate>
+@interface PVFeedController () <PVFlickerFeedDelegate, PVFlickerEntryDownloadDelegate>
 
 @property (nonatomic, strong) PVFlickerFeed *feed;
 
@@ -70,7 +69,7 @@
         PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
         entry.delegate = self;
         [cell setSize:entry.size];
-        cell.imageView.image = [[PVImageStore sharedStore] imageForKey:entry.thumbnail];
+        [cell setImage:[[PVImageStore sharedStore] imageForKey:entry.thumbnail]];
     }
     return cell;
 }
@@ -129,10 +128,10 @@
     int index = [self.feed.entries indexOfObject:flickerEntry];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     PVPhotoCell *cell = (PVPhotoCell *)[self.stackCollectionView cellForItemAtIndexPath:indexPath];
-    cell.imageView.image = [[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail];
+    [cell setImage:[[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail]];
     if (self.gridCollectionView) {
         PVPhotoCell *cell = (PVPhotoCell *)[self.gridCollectionView cellForItemAtIndexPath:indexPath];
-        cell.imageView.image = [[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail];
+        [cell setImage:[[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail]];
     }
 }
 
