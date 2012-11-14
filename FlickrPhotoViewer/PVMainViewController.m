@@ -117,7 +117,7 @@
 {
     PVFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCell" forIndexPath:indexPath];
     PVFeedController *feedController = [self.feedControllers objectAtIndex:indexPath.row];
-    feedController.collectionView = cell.collectionView;
+    feedController.stackCollectionView = cell.collectionView;
     cell.feedViewController = feedController;
     cell.textField.text = feedController.tag;
     return cell;

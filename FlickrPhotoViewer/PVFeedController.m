@@ -10,11 +10,10 @@
 #import "PVFlickerFeed.h"
 #import "PVFlickerEntry.h"
 #import "PVPhotoCell.h"
-#import "PVAppDelegate.h"
-#import "PVMainViewController.h"
 #import "PVImageStore.h"
+#import "PVStackLayout.h"
 
-@interface PVFeedController () <PVFlickerFeedDelegate, PVFlickerEntryDownloadDelegate>
+@interface PVFeedController () <PVFlickerFeedDelegate, PVFlickerEntryDownloadDelegate, PVStackLayoutDelegate>
 
 @property (nonatomic, strong) PVFlickerFeed *feed;
 
@@ -36,37 +35,23 @@
     return self;
 }
 
-- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.feed.entries) {
-        PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
-        return entry.size;
-    }
-    return CGSizeMake(100, 100);
-}
-
-- (CGFloat)angleForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.feed.entries) {
-        PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
-        return entry.angle;
-    }
-    return 0.0;
-}
-
-- (void)feedFetched
-{
-    [self.collectionView reloadData];
-    if (self.gridCollectionView) {
-        [self.gridCollectionView reloadData];
-        [self.refreshControl endRefreshing];
-    }
-}
-
 - (void)refreshFeed
 {
     [self.feed fetchEntries];
 }
+
+- (void)setTag:(NSString *)tag
+{
+    self.feed.tag = tag;
+    [self.feed fetchEntries];
+}
+
+- (NSString *)tag
+{
+    return self.feed.tag;
+}
+
+#pragma mark - UICollectionView
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -90,20 +75,6 @@
     return cell;
 }
 
-- (void)thumbnailDowloadedForEntry:(PVFlickerEntry *)flickerEntry
-{
-    int index = [self.feed.entries indexOfObject:flickerEntry];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    if (self.collectionView) {
-        PVPhotoCell *cell = (PVPhotoCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-        cell.imageView.image = [[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail];
-    }
-    if (self.gridCollectionView) {
-        PVPhotoCell *cell = (PVPhotoCell *)[self.gridCollectionView cellForItemAtIndexPath:indexPath];
-        cell.imageView.image = [[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail];
-    }
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if (self.feed.entries)
@@ -111,19 +82,35 @@
     return 0;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - PVFlickerFeedDelegate
+
+- (void)feedFetched
 {
+    [self.stackCollectionView reloadData];
+    if (self.gridCollectionView) {
+        [self.gridCollectionView reloadData];
+        [self.refreshControl endRefreshing];
+    }
 }
 
-- (void)setTag:(NSString *)tag
+#pragma mark - PVStackLayoutDelegate
+
+- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.feed.tag = tag;
-    [self.feed fetchEntries];
+    if (self.feed.entries) {
+        PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
+        return entry.size;
+    }
+    return CGSizeMake(100, 100);
 }
 
-- (NSString *)tag
+- (CGFloat)angleForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.feed.tag;
+    if (self.feed.entries) {
+        PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
+        return entry.angle;
+    }
+    return 0.0;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -134,5 +121,20 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+#pragma mark - PVFlickerEntryDownloadDelegate
+
+- (void)thumbnailDowloadedForEntry:(PVFlickerEntry *)flickerEntry
+{
+    int index = [self.feed.entries indexOfObject:flickerEntry];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    PVPhotoCell *cell = (PVPhotoCell *)[self.stackCollectionView cellForItemAtIndexPath:indexPath];
+    cell.imageView.image = [[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail];
+    if (self.gridCollectionView) {
+        PVPhotoCell *cell = (PVPhotoCell *)[self.gridCollectionView cellForItemAtIndexPath:indexPath];
+        cell.imageView.image = [[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail];
+    }
+}
+
 
 @end

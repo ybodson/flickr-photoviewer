@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PVStackLayout.h"
 
-@interface PVFeedController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, PVStackLayoutDelegate, UITextFieldDelegate>
+@interface PVFeedController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate>
 
-@property (nonatomic, weak) UICollectionView *collectionView;
+@property (nonatomic, weak) UICollectionView *stackCollectionView;
 @property (nonatomic, weak) UICollectionView *gridCollectionView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic) NSString *tag;
