@@ -15,11 +15,12 @@
 
 @interface PVMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) NSArray *feedControllers;
+@property (nonatomic, strong) NSMutableArray *feedControllers;
 @property (nonatomic, strong) UIView *midView;
 @property (nonatomic, strong) UICollectionView *frontView;
 @property (nonatomic, strong) PVStackLayout *stackLayout;
 @property (nonatomic, strong) UIBarButtonItem *backButton;
+@property (nonatomic, strong) UIBarButtonItem *addButton;
 @property (nonatomic, weak) PVFeedCell *selectedCell;
 
 @end
@@ -31,11 +32,10 @@
 {
     [super viewDidLoad];
     
-    self.feedControllers = @[[[PVFeedController alloc] initWithTag:@"Wildlife"],
+    self.feedControllers = [@[[[PVFeedController alloc] initWithTag:@"Wildlife"],
         [[PVFeedController alloc] initWithTag:@"Flowers"],
         [[PVFeedController alloc] initWithTag:@"Nature"],
-        [[PVFeedController alloc] initWithTag:@"Beach"]
-    ];
+        [[PVFeedController alloc] initWithTag:@"Beach"]] mutableCopy];
 
     self.navigationItem.title = @"Flickr Photo Viewer";
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
@@ -50,6 +50,10 @@
                                                        style:UIBarButtonItemStyleBordered
                                                       target:self
                                                       action:@selector(backPressed:)];
+    self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                   target:self
+                                                                   action:@selector(createNewStack:)];
+    self.navigationItem.rightBarButtonItem = self.addButton;
 }
 
 - (void)stackPressed
@@ -76,6 +80,7 @@
 {
     [self.navigationItem setRightBarButtonItem:nil animated:YES];
     self.navigationItem.title = @"Flickr Photo Viewer";
+    [self.navigationItem setRightBarButtonItem:self.addButton animated:YES];
 
     [UIView animateWithDuration:0.4
                           delay:0
@@ -103,6 +108,12 @@
     self.midView.alpha = 0.0;
     [self.view addSubview:self.midView];
 
+}
+
+- (void)createNewStack:(id)sender
+{
+    [self.feedControllers addObject:[[PVFeedController alloc] initWithTag:@""]];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
