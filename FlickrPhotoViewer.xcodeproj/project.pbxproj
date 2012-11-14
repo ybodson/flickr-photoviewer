@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1DCDE0165361B800CAF086 /* PVScrollableLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1DCDDF165361B700CAF086 /* PVScrollableLayout.m */; };
 		AA282DF8164E2C3E00CB3D84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA282DF7164E2C3E00CB3D84 /* UIKit.framework */; };
 		AA282DFA164E2C3E00CB3D84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA282DF9164E2C3E00CB3D84 /* Foundation.framework */; };
 		AA282DFC164E2C3E00CB3D84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA282DFB164E2C3E00CB3D84 /* CoreGraphics.framework */; };
@@ -32,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA1DCDDE165361B700CAF086 /* PVScrollableLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVScrollableLayout.h; sourceTree = "<group>"; };
+		AA1DCDDF165361B700CAF086 /* PVScrollableLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVScrollableLayout.m; sourceTree = "<group>"; };
 		AA282DF3164E2C3E00CB3D84 /* FlickrPhotoViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrPhotoViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA282DF7164E2C3E00CB3D84 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA282DF9164E2C3E00CB3D84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,6 +120,8 @@
 			children = (
 				AA282E06164E2C3E00CB3D84 /* PVAppDelegate.h */,
 				AA282E07164E2C3E00CB3D84 /* PVAppDelegate.m */,
+				AA1DCDDE165361B700CAF086 /* PVScrollableLayout.h */,
+				AA1DCDDF165361B700CAF086 /* PVScrollableLayout.m */,
 				AAD0F63F1650D6100057F479 /* PVMainViewController.h */,
 				AAD0F6401650D6100057F479 /* PVMainViewController.m */,
 				AAD0F6331650D6100057F479 /* PVFeedCell.h */,
@@ -244,6 +249,7 @@
 				AAD0F64B1650D6100057F479 /* PVMainViewController.m in Sources */,
 				AAD0F64C1650D6100057F479 /* PVPhotoCell.m in Sources */,
 				AAD0F64D1650D6100057F479 /* PVStackLayout.m in Sources */,
+				AA1DCDE0165361B800CAF086 /* PVScrollableLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

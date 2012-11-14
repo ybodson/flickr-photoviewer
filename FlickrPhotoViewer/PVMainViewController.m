@@ -7,6 +7,7 @@
 //
 
 #import "PVMainViewController.h"
+#import "PVScrollableLayout.h"
 #import "PVFeedController.h"
 #import "PVFeedCell.h"
 #import "PVPhotoCell.h"
@@ -53,7 +54,7 @@
 
 - (void)stackPressed
 {
-    UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
+    PVScrollableLayout *flow = [[PVScrollableLayout alloc] init];
     flow.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
     self.selectedCell.alpha = 0.0;
     self.navigationItem.title = self.selectedCell.textField.text;
@@ -135,8 +136,8 @@
     
     self.stackLayout = [[PVStackLayout alloc] init];
     self.stackLayout.stackCenter = p;
-    self.stackLayout.viewSize = self.collectionView.frame.size;
-    self.frontView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.stackLayout];
+    self.stackLayout.viewSize = self.collectionView.bounds.size;
+    self.frontView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.stackLayout];
     
     PVFeedController *feedController = [self.feedControllers objectAtIndex:indexPath.row];
 
