@@ -11,6 +11,7 @@
 #import "PVFlickerEntry.h"
 #import "PVPhotoCell.h"
 #import "PVImageStore.h"
+#import "PVAppDelegate.h"
 
 @interface PVFeedController () <PVFlickerFeedDelegate, PVFlickerEntryDownloadDelegate>
 
@@ -65,13 +66,47 @@
 {
     PVPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [cell addGestureRecognizer:longPress];
+    
     if (self.feed.entries && self.feed.entries.count > 0) {
         PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
         entry.delegate = self;
         [cell setSize:entry.size];
-        [cell setImage:[[PVImageStore sharedStore] imageForKey:entry.thumbnail]];
+        [cell setImage:[[PVImageStore sharedStore] imageForKey:entry.thumbnailURL]];
     }
     return cell;
+}
+
+- (void)longPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPath = [self.gridCollectionView indexPathForCell:(UICollectionViewCell *)gestureRecognizer.view];
+        PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
+
+        UIViewController *vc = [[UIViewController alloc] init];
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+        webView.scalesPageToFit = YES;
+        webView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+        vc.view = webView;
+        
+        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:entry.link]];
+        [webView loadRequest:req];
+        
+        UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+        UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleBordered target:self action:@selector(closeWebView:)];
+        vc.navigationItem.leftBarButtonItem = closeButton;
+        vc.navigationItem.title = entry.link;
+        
+        PVAppDelegate *d = (PVAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [d.window.rootViewController presentViewController:nvc animated:YES completion:nil];
+    }
+}
+
+- (void)closeWebView:(id)sender
+{
+    PVAppDelegate *d = (PVAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [d.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -128,10 +163,10 @@
     int index = [self.feed.entries indexOfObject:flickerEntry];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     PVPhotoCell *cell = (PVPhotoCell *)[self.stackCollectionView cellForItemAtIndexPath:indexPath];
-    [cell setImage:[[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail]];
+    [cell setImage:[[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnailURL]];
     if (self.gridCollectionView) {
         PVPhotoCell *cell = (PVPhotoCell *)[self.gridCollectionView cellForItemAtIndexPath:indexPath];
-        [cell setImage:[[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail]];
+        [cell setImage:[[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnailURL]];
     }
 }
 

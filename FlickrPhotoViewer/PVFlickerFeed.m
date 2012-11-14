@@ -111,7 +111,8 @@
         NSDictionary *dic2 = [dic objectForKey:@"media"];
         NSString *u = [dic2 objectForKey:@"m"];
         entry.title = title;
-        entry.thumbnail = u;
+        entry.thumbnailURL = u;
+        entry.link = [dic objectForKey:@"link"];
         [entry loadThumbnail];
         [self.entries insertObject:entry atIndex:0];
     }

@@ -35,18 +35,18 @@
 
 - (NSString *)description
 {
-    NSString *desc = [NSString stringWithFormat:@"title: %@\nthumbnail: %@\n", self.title, self.thumbnail];
+    NSString *desc = [NSString stringWithFormat:@"title: %@\nthumbnail: %@\n", self.title, self.thumbnailURL];
     return desc;
 }
 
 - (void)loadThumbnail
 {
-    UIImage *image = [[PVImageStore sharedStore] imageForKey:self.thumbnail];
+    UIImage *image = [[PVImageStore sharedStore] imageForKey:self.thumbnailURL];
 
     if (image)
         return;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.thumbnail]
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.thumbnailURL]
                                              cachePolicy:NSURLRequestReloadRevalidatingCacheData
                                          timeoutInterval:30.0];
     self.urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -68,7 +68,7 @@
 {
     UIImage *image = [UIImage imageWithData:self.data];
     if (image)
-        [[PVImageStore sharedStore] setImage:image forKey:self.thumbnail];
+        [[PVImageStore sharedStore] setImage:image forKey:self.thumbnailURL];
     self.data = nil;
     self.urlConnection = nil;
     [self.delegate thumbnailDowloadedForEntry:self];

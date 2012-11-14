@@ -20,7 +20,8 @@
 
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *thumbnail;
+@property (nonatomic, copy) NSString *thumbnailURL;
+@property (nonatomic, copy) NSString *link;
 @property (nonatomic) CGSize size;
 @property (nonatomic) CGFloat angle;
 @property (nonatomic, weak) id<PVFlickerEntryDownloadDelegate> delegate;

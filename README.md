@@ -13,7 +13,12 @@ The original demo used a very neat QML feature called [Packages](http://qt-proje
 
 ![stack view](https://dl.dropbox.com/u/4917684/FlickrPhotoViewer/stackview.png)
 
+![loading view](https://dl.dropbox.com/u/4917684/FlickrPhotoViewer/loading.png)
+
+![web view](https://dl.dropbox.com/u/4917684/FlickrPhotoViewer/webview.png)
+
 #### Author
 
 Yann Bodson
+
 [@grimfrog](http://twitter.com/grimfrog)

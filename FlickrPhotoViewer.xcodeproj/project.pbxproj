@@ -18,7 +18,6 @@
 		AA282E0C164E2C3E00CB3D84 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA282E0B164E2C3E00CB3D84 /* Default@2x.png */; };
 		AA282E0E164E2C3E00CB3D84 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA282E0D164E2C3E00CB3D84 /* Default-568h@2x.png */; };
 		AA91AE7F164E2CC6001D473F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AA91AE7E164E2CC6001D473F /* README.md */; };
-		AA99302316532C9E00895C85 /* Default~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = AA99302216532C9E00895C85 /* Default~iPad.png */; };
 		AAD0F6451650D6100057F479 /* PVFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6341650D6100057F479 /* PVFeedCell.m */; };
 		AAD0F6461650D6100057F479 /* PVFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6361650D6100057F479 /* PVFeedController.m */; };
 		AAD0F6471650D6100057F479 /* PVFlickerEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0F6381650D6100057F479 /* PVFlickerEntry.m */; };
@@ -49,7 +48,6 @@
 		AA282E0B164E2C3E00CB3D84 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AA282E0D164E2C3E00CB3D84 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AA91AE7E164E2CC6001D473F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		AA99302216532C9E00895C85 /* Default~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~iPad.png"; path = "Images/Default~iPad.png"; sourceTree = "<group>"; };
 		AAD0F6331650D6100057F479 /* PVFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVFeedCell.h; sourceTree = "<group>"; };
 		AAD0F6341650D6100057F479 /* PVFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PVFeedCell.m; sourceTree = "<group>"; };
 		AAD0F6351650D6100057F479 /* PVFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVFeedController.h; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		AA282DFE164E2C3E00CB3D84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA99302216532C9E00895C85 /* Default~iPad.png */,
 				AA282DFF164E2C3E00CB3D84 /* FlickrPhotoViewer-Info.plist */,
 				AA282E00164E2C3E00CB3D84 /* InfoPlist.strings */,
 				AA282E03164E2C3E00CB3D84 /* main.m */,
@@ -228,7 +225,6 @@
 				AA91AE7F164E2CC6001D473F /* README.md in Resources */,
 				AAD0F6661650D8B80057F479 /* frame.png in Resources */,
 				AAD0F6671650D8B80057F479 /* paper.jpg in Resources */,
-				AA99302316532C9E00895C85 /* Default~iPad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
