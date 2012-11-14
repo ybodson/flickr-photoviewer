@@ -7,6 +7,15 @@
 //
 
 #import "PVFlickerEntry.h"
+#import "PVImageStore.h"
+
+@interface PVFlickerEntry ()
+
+@property (nonatomic, strong) NSURLConnection *urlConnection;
+@property (nonatomic, strong) NSMutableData *data;
+
+@end
+
 
 @implementation PVFlickerEntry
 
@@ -28,6 +37,41 @@
 {
     NSString *desc = [NSString stringWithFormat:@"title: %@\nthumbnail: %@\n", self.title, self.thumbnail];
     return desc;
+}
+
+- (void)loadThumbnail
+{
+    UIImage *image = [[PVImageStore sharedStore] imageForKey:self.thumbnail];
+
+    if (image)
+        return;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.thumbnail]
+                                             cachePolicy:NSURLRequestReloadRevalidatingCacheData
+                                         timeoutInterval:30.0];
+    self.urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)incrementalData
+{
+    if (self.data == nil)
+        self.data = [[NSMutableData alloc] init];
+    [self.data appendData:incrementalData];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    UIImage *image = [UIImage imageWithData:self.data];
+    if (image)
+        [[PVImageStore sharedStore] setImage:image forKey:self.thumbnail];
+    self.data = nil;
+    self.urlConnection = nil;
+    [self.delegate thumbnailDowloadedForEntry:self];
 }
 
 @end

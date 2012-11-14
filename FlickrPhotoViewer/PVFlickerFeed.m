@@ -112,6 +112,7 @@
         NSString *u = [dic2 objectForKey:@"m"];
         entry.title = title;
         entry.thumbnail = u;
+        [entry loadThumbnail];
         [self.entries insertObject:entry atIndex:0];
     }
     [self.delegate feedFetched];

@@ -12,8 +12,9 @@
 #import "PVPhotoCell.h"
 #import "PVAppDelegate.h"
 #import "PVMainViewController.h"
+#import "PVImageStore.h"
 
-@interface PVFeedController () <PVFlickerFeedDelegate>
+@interface PVFeedController () <PVFlickerFeedDelegate, PVFlickerEntryDownloadDelegate>
 
 @property (nonatomic, strong) PVFlickerFeed *feed;
 
@@ -82,10 +83,25 @@
     
     if (self.feed.entries && self.feed.entries.count > 0) {
         PVFlickerEntry *entry = [self.feed.entries objectAtIndex:indexPath.row];
+        entry.delegate = self;
         [cell setSize:entry.size];
-        [cell.imageView loadImageFromURLString:entry.thumbnail];
+        cell.imageView.image = [[PVImageStore sharedStore] imageForKey:entry.thumbnail];
     }
     return cell;
+}
+
+- (void)thumbnailDowloadedForEntry:(PVFlickerEntry *)flickerEntry
+{
+    int index = [self.feed.entries indexOfObject:flickerEntry];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    if (self.collectionView) {
+        PVPhotoCell *cell = (PVPhotoCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        cell.imageView.image = [[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail];
+    }
+    if (self.gridCollectionView) {
+        PVPhotoCell *cell = (PVPhotoCell *)[self.gridCollectionView cellForItemAtIndexPath:indexPath];
+        cell.imageView.image = [[PVImageStore sharedStore] imageForKey:flickerEntry.thumbnail];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -115,6 +131,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     self.tag = textField.text;
+    [textField resignFirstResponder];
     return YES;
 }
 

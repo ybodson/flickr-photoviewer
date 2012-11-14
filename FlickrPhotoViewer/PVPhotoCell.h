@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PVImageView.h"
 
 @interface PVPhotoCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView *borderView;
-@property (nonatomic, strong) PVImageView *imageView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 - (void)setSize:(CGSize)size;
 

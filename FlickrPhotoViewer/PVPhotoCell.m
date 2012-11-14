@@ -16,7 +16,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         CGRect r = CGRectMake(10, 10, frame.size.width - 20, frame.size.height - 20);
-        self.imageView = [[PVImageView alloc] initWithFrame:r];
+        self.imageView = [[UIImageView alloc] initWithFrame:r];
         self.imageView.backgroundColor = [UIColor clearColor];
 
         CGRect border = CGRectMake(0, 0, frame.size.width, frame.size.height);
