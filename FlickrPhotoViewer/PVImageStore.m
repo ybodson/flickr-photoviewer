@@ -17,6 +17,11 @@
 
 @implementation PVImageStore
 
++ (id)allocWithZone:(NSZone *)zone
+{
+    return [PVImageStore sharedStore];
+}
+
 + (PVImageStore *)sharedStore
 {
     static PVImageStore *sharedStore = nil;
